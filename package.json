@@ -1,0 +1,23 @@
+{
+  "name": "Tap",
+  "version": "1.0.0",
+  "description": "mobile click bypass delay",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devWayne/Tap.git"
+  },
+  "keywords": [
+    "tap",
+    "mobile"
+  ],
+  "author": "Vi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devWayne/Tap/issues"
+  },
+  "homepage": "https://github.com/devWayne/Tap"
+}
