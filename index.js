@@ -1,24 +1,29 @@
+/**
+ * @param {Element} el Description
+ * @param {Function} fn Description
+ * @return {void} description
+ */
 function Tap(el, fn) {
-
-    this.el = el;
-    this.fn = fn || function() {};
-    this.tap = true;
+    el = el || document.body;
+    fn = fn || function() {};
+    var tap = true;
     if ('ontouchstart' in window) {
-        this.el.addEventListener('touchmove', function(e) {
-            this.tap = false;
-            this.el.removeEventListener('touchmove', arguments.callee);
-        }.bind(this));
-        this.el.addEventListener('touchend', function(e) {
-            if (this.tap) this.fn(e);
-            this.tap = true;
-            this.el.addEventListener('touchmove', function(e) {
-                this.tap = false;
-                this.el.removeEventListener('touchmove', arguments.callee);
-            }.bind(this));
+        el.addEventListener('touchmove', function(e) {
+            tap = false;
+            el.removeEventListener('touchmove', arguments.callee);
+        });
+        el.addEventListener('touchend', function(e) {
+            if (tap) fn(e);
+            tap = true;
+            el.addEventListener('touchmove', function(e) {
+                tap = false;
+                el.removeEventListener('touchmove', arguments.callee);
+            });
 
-        }.bind(this));
+        });
     } else {
-        this.el.addEventListener('click', fn);
+        el.addEventListener('click', fn);
     }
+    return this;
 }
 typeof module != 'undefined' ? module.exports = Tap : this[Tap] = Tap;
